@@ -1,4 +1,5 @@
-let allItems = [];
+let allItems = []; //aaaaaaa
+
 let inventory = {
   items: []
 };
