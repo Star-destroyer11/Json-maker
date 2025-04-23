@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById("containerSelect").addEventListener("change", (e) => {
     selectedContainerId = e.target.value;
   });
+  document.getElementById("galaxyMode2").addEventListener("change", handleGalaxyToggle2);
   document.getElementById("galaxyMode").addEventListener("change", handleGalaxyToggle);
   document.getElementById("filterMode").addEventListener("change", updateItemSelect);
 
@@ -160,6 +161,28 @@ document.addEventListener('DOMContentLoaded', () => {
     valueSlider.value = value;
     this.value = value;
   });
+
+  function handleGalaxyToggle2() {
+    const galaxyEnabled2 = document.getElementById("galaxyMode2").checked;
+    const hueSlider = document.getElementById("hue");
+    const hueDisplay = document.getElementById("hueValue");
+    const saturationSlider = document.getElementById("saturation");
+    const saturationDisplay = document.getElementById("saturationValue");
+    
+    hueSlider.disabled = galaxyEnabled2;
+    saturationSlider.disabled = galaxyEnabled2;
+    document.getElementById("randomHue").disabled = galaxyEnabled2;
+    document.getElementById("randomSaturation").disabled = galaxyEnabled2;
+    document.getElementById("sameRandomHue").disabled = galaxyEnabled2;
+    document.getElementById("sameRandomSaturation").disabled = galaxyEnabled2;
+
+    if (galaxyEnabled2) {
+      hueSlider.value = 180;
+      hueDisplay.value = "180";
+      saturationSlider.value = 117;
+      saturationDisplay.value = "117";
+    }
+  }
 
   function handleGalaxyToggle() {
     const galaxyEnabled = document.getElementById("galaxyMode").checked;
