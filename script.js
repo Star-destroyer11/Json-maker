@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById("containerSelect").addEventListener("change", (e) => {
     selectedContainerId = e.target.value;
   });
+  document.getElementById("diamondMode").addEventListener("change", handleDiamondToggle);
+  document.getElementById("diamondMode2").addEventListener("change", handleDiamondToggle2);
+  document.getElementById("rubyMode").addEventListener("change", handleRubyToggle);
+  document.getElementById("goldMode").addEventListener("change", handleGoldToggle);
   document.getElementById("galaxyMode2").addEventListener("change", handleGalaxyToggle2);
   document.getElementById("galaxyMode").addEventListener("change", handleGalaxyToggle);
   document.getElementById("filterMode").addEventListener("change", updateItemSelect);
@@ -161,6 +165,95 @@ document.addEventListener('DOMContentLoaded', () => {
     valueSlider.value = value;
     this.value = value;
   });
+
+function handleGoldToggle() {
+  const goldEnabled = document.getElementById("goldMode").checked;
+  const hueSlider = document.getElementById("hue");
+  const hueDisplay = document.getElementById("hueValue");
+  const saturationSlider = document.getElementById("saturation");
+  const saturationDisplay = document.getElementById("saturationValue");
+
+  hueSlider.disabled = goldEnabled;
+  saturationSlider.disabled = goldEnabled;
+  document.getElementById("randomHue").disabled = goldEnabled;
+  document.getElementById("randomSaturation").disabled = goldEnabled;
+  document.getElementById("sameRandomHue").disabled = goldEnabled;
+  document.getElementById("sameRandomSaturation").disabled = goldEnabled;
+
+  if (goldEnabled) {
+    hueSlider.value = 45;
+    hueDisplay.value = "45";
+    saturationSlider.value = 120;
+    saturationDisplay.value = "120";
+  }
+}
+
+
+function handleRubyToggle() {
+  const rubyEnabled = document.getElementById("rubyMode").checked;
+  const hueSlider = document.getElementById("hue");
+  const hueDisplay = document.getElementById("hueValue");
+  const saturationSlider = document.getElementById("saturation");
+  const saturationDisplay = document.getElementById("saturationValue");
+
+  hueSlider.disabled = rubyEnabled;
+  saturationSlider.disabled = rubyEnabled;
+  document.getElementById("randomHue").disabled = rubyEnabled;
+  document.getElementById("randomSaturation").disabled = rubyEnabled;
+  document.getElementById("sameRandomHue").disabled = rubyEnabled;
+  document.getElementById("sameRandomSaturation").disabled = rubyEnabled;
+
+  if (rubyEnabled) {
+    hueSlider.value = 0;
+    hueDisplay.value = "0";
+    saturationSlider.value = 120;
+    saturationDisplay.value = "120";
+  }
+}
+
+ function handleDiamondToggle2() {
+    const diamondEnabled2 = document.getElementById("diamondMode2").checked;
+    const hueSlider = document.getElementById("hue");
+    const hueDisplay = document.getElementById("hueValue");
+    const saturationSlider = document.getElementById("saturation");
+    const saturationDisplay = document.getElementById("saturationValue");
+    
+    hueSlider.disabled = diamondEnabled2;
+    saturationSlider.disabled = diamondEnabled2;
+    document.getElementById("randomHue").disabled = diamondEnabled2;
+    document.getElementById("randomSaturation").disabled = diamondEnabled2;
+    document.getElementById("sameRandomHue").disabled = diamondEnabled2;
+    document.getElementById("sameRandomSaturation").disabled = diamondEnabled2;
+
+    if (diamondEnabled2) {
+      hueSlider.value = 90;
+      hueDisplay.value = "90";
+      saturationSlider.value = 120;
+      saturationDisplay.value = "120";
+    }
+  }
+
+ function handleDiamondToggle() {
+    const diamondEnabled = document.getElementById("diamondMode").checked;
+    const hueSlider = document.getElementById("hue");
+    const hueDisplay = document.getElementById("hueValue");
+    const saturationSlider = document.getElementById("saturation");
+    const saturationDisplay = document.getElementById("saturationValue");
+    
+    hueSlider.disabled = diamondEnabled;
+    saturationSlider.disabled = diamondEnabled;
+    document.getElementById("randomHue").disabled = diamondEnabled;
+    document.getElementById("randomSaturation").disabled = diamondEnabled;
+    document.getElementById("sameRandomHue").disabled = diamondEnabled;
+    document.getElementById("sameRandomSaturation").disabled = diamondEnabled;
+
+    if (diamondEnabled) {
+      hueSlider.value = 120;
+      hueDisplay.value = "120";
+      saturationSlider.value = 120;
+      saturationDisplay.value = "120";
+    }
+  }
 
   function handleGalaxyToggle2() {
     const galaxyEnabled2 = document.getElementById("galaxyMode2").checked;
