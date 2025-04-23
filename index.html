@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Star's Lunara Inventory Generator</title>
+  <title>Lunara Stash Generator</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -11,7 +11,6 @@
   <div class="header-container">
     <div class="mode-toggle-container">
       <button id="advancedMode" class="toggle-button">Basic Mode</button>
-      <button id="stackMode" class="toggle-button">Stacking: Off</button>
       <label class="theme-switch" for="themeToggle">
         <input type="checkbox" id="themeToggle" checked>
         <span class="slider">
@@ -22,8 +21,7 @@
         </span>
       </label>
     </div>
-    <h1>Star's Lunara Inventory Generator</h1>
-    <p>Want Premade JSON's https://star-destroyer11.github.io/AC-Jsons/</p>
+    <h1>animalcompanymod's Lunara Inventory Generator</h1>
   </div>
 
   <div class="search-container">
@@ -35,8 +33,8 @@
     <div class="form-field">
       <label for="itemSelect">Item:</label>
       <select id="itemSelect">
-        <option value="random">Random (All)</option>
-        <option value="randomContainer">Container (Random Container)</option>
+        <option value="random">Random</option>
+        <option value="randomContainer">Container (Random Bag)</option>
         <option value="randomItem">Item (Random Item)</option>
       </select>
     </div>
@@ -45,13 +43,14 @@
       <label for="filterMode">Filter Mode:</label>
       <select id="filterMode">
         <option value="all">All Items</option>
-        <option value="containers">Only Containers</option>
-        <option value="items">Only Items (No Containers)</option>
+        <option value="containers">Only Bags</option>
+        <option value="items">Only Items (No Bags)</option>
       </select>
     </div>
 
     <div class="form-field">
       <label>
+     <label>
         <input type="checkbox" id="galaxyMode" />
         Enable Galaxy Mode
       </label>
@@ -99,6 +98,22 @@
         </div>
       </div>
     </div>
+   
+    <div class="form-field" 
+  <label>Shredder State (0 - 8000): <small>(only works for item_shredder)</small></label>
+  <div class="input-row">
+    <div class="input-container slider-container">
+      <input type="range" id="shredderState" min="0" max="8000" value="8000" class="slider-input">
+      <div class="slider-value-display">
+        <input type="number" id="shredderStateValue" value="8000" min="0" max="8000">
+      </div>
+    </div>
+    <div class="random-container">
+      <input type="checkbox" id="randomShredderState" />
+      <label for="randomShredderState">Random</label>
+    </div>
+  </div>
+</div>
     
     <div class="form-field">
       <label>Saturation (0-120):</label>
@@ -120,7 +135,6 @@
           </div>
         </div>
       </div>
-      <div id="colorDisplay" class="color-display"></div>
     </div>
     
     <div class="form-field">
@@ -145,39 +159,15 @@
       </div>
     </div>
 
-    <div id="valueSliderContainer" class="form-field" style="display: none;">
-      <label>Value (20-8020):</label>
-      <div class="input-row">
-        <div class="input-container slider-container">
-          <input type="range" id="valueSlider" min="20" max="8020" value="20" class="slider-input">
-          <div class="slider-value-display">
-            <input type="number" id="valueInput" value="20" min="20" max="8020">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="ammoSliderContainer" class="form-field" style="display: none;">
-      <label>Ammo:</label>
-      <div class="input-row">
-        <div class="input-container slider-container">
-          <input type="range" id="ammoSlider" min="0" max="1" value="1" class="slider-input">
-          <div class="slider-value-display">
-            <input type="number" id="ammoInput" value="1" min="0" max="1">
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="count-field">
       <label for="count">Count:</label>
       <input type="number" id="count" value="1" min="1" />
     </div>
 
     <div id="containerSelection">
-      <label for="containerSelect">Add to container:</label>
+      <label for="containerSelect">Add to Bag:</label>
       <select id="containerSelect">
-        <option value="root">Root (No Container)</option>
+        <option value="root">Root (No Bag)</option>
       </select>
     </div>
 
@@ -186,10 +176,9 @@
 
   <div class="item-section">
     <div class="item-header">
-      <h2>Inventory Items</h2>
+      <h2>Stash Items</h2>
       <div class="download-section">
         <input type="text" id="fileTitle" placeholder="Enter file title" />
-        <div id="jsonSizeIndicator" class="json-size-indicator">JSON Size: 0 KB</div>
         <button id="importJson">Import JSON</button>
         <button id="downloadJson">Download JSON</button>
       </div>
